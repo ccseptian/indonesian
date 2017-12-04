@@ -1,0 +1,13 @@
+{
+    "name": "ccseptian/indonesian",
+    "description": "Package Indonesian format for Laravel 5",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Tian",
+            "email": "ccseptian@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
