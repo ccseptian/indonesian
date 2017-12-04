@@ -1,18 +1,22 @@
 {
-    "name": "ccseptian/indonesian",
-    "description": "Package Indonesian format for Laravel 5",
-    "type": "library",
-    "keywords": ["indonesian","format"],
-    "homepage": "https://github.com/ccseptian/indonesian",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Tian",
-            "email": "ccseptian@gmail.com"
-        }
-    ],
-    "minimum-stability": "dev",
-    "require": {
-        "php": ">=5.3.0"
+  "name": "ccseptian/indonesian",
+  "description": "Package Indonesian format for Laravel 5",
+  "type": "library",
+  "keywords": [
+    "indonesian",
+    "format"
+  ],
+  "homepage": "https://github.com/ccseptian/indonesian",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Tian",
+      "email": "ccseptian@gmail.com"
     }
+  ],
+  "require": {
+    "php": ">=5.3.0"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
