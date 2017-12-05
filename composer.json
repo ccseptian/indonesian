@@ -17,7 +17,8 @@
   "autoload": {
     "psr-4": {
       "Ccseptian\\Indonesian\\": "src/"
-    }
+    },
+    "files": ["src/helpers.php"]
   },
   "config": {
     "preferred-install": "dist",

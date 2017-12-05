@@ -13,7 +13,9 @@ class IndonesianServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        include __DIR__ . '/routes.php';
+        $this->publishes([
+            __DIR__ . '/id' => base_path('resources/lang/vendor/indonesian/id'),
+        ]);
     }
 
     /**
@@ -23,6 +25,7 @@ class IndonesianServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->make('Ccseptian\Indonesian\IndonesianController');
+//        include __DIR__.'/id';
+        include __DIR__.'/helpers.php';
     }
 }
