@@ -106,30 +106,63 @@ if (!function_exists('setDiperbarui')) {
 }
 
 if (!function_exists('setUmur')) {
-    function setUmur($tanggal)
+    function setUmur($tanggal, $format = 'Y-m-d')
     {
         $date = new DateTime($tanggal);
         $now = new DateTime();
-
         $dateInterval = $date->diff($now);
-        
-        if ($dateInterval->d) {
-            $tertanggal = $dateInterval->d . ' hari ' . $f;
+
+        $tertanggal = '';
+        $f = '';
+
+        if ($format == 'd') {
+            $f = 'hari';
+            $tertanggal = $dateInterval->days . ' ' . $f;
+        } elseif ($format == 'm-d') {
+            $f = 'hari';
+            if ($dateInterval->d) {
+                $tertanggal = $dateInterval->d . ' ' . $f;
+            }
+            if ($dateInterval->m) {
+                $tertanggal = $dateInterval->m . ' bulan ' . $tertanggal;
+            }
+            if (!$dateInterval->m && !$dateInterval->d) {
+                $tertanggal = '0 ' . $f;
+            }
+        } elseif ($format == 'm') {
+            $f = 'bulan';
+            $y = ($dateInterval->y) ? $dateInterval->y * 12 : 0;
+            $tertanggal = ($y + $dateInterval->m) . ' ' . $f;
+        } elseif ($format == 'Y-m') {
+            $f = 'bulan';
+            if ($dateInterval->m) {
+                $tertanggal = $dateInterval->m . ' ' . $f;
+            }
+            if ($dateInterval->y) {
+                $tertanggal = $dateInterval->y . ' tahun ' . $tertanggal;
+            }
+            if (!$dateInterval->y && !$dateInterval->m) {
+                $tertanggal = '0 ' . $f;
+            }
+        } elseif ($format == 'Y') {
+            $f = 'tahun';
+            $tertanggal = $dateInterval->y . ' ' . $f;
+        } else {
+            if ($dateInterval->d) {
+                $tertanggal = $dateInterval->d . ' hari ' . $tertanggal;
+            }
+            if ($dateInterval->m) {
+                $tertanggal = $dateInterval->m . ' bulan ' . $tertanggal;
+            }
+            if ($dateInterval->y) {
+                $tertanggal = $dateInterval->y . ' tahun ' . $tertanggal;
+            }
         }
 
-        if ($dateInterval->m) {
-            $tertanggal = $dateInterval->m . ' bulan ' . $f;
-        }
-
-        if ($dateInterval->y) {
-            $tertanggal = $dateInterval->y . ' tahun ' . $f;
-        }
-        
         if ($dateInterval->f < 0) {
-            return '0 hari';
+            return '0 '.$f;
         } else {
             return $tertanggal;
         }
-
     }
 }
