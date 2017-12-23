@@ -104,3 +104,32 @@ if (!function_exists('setDiperbarui')) {
         return 'Diperbarui ' . setTertanggal($tanggal);
     }
 }
+
+if (!function_exists('setUmur')) {
+    function setUmur($tanggal)
+    {
+        $date = new DateTime($tanggal);
+        $now = new DateTime();
+
+        $dateInterval = $date->diff($now);
+        
+        if ($dateInterval->d) {
+            $tertanggal = $dateInterval->d . ' hari ' . $f;
+        }
+
+        if ($dateInterval->m) {
+            $tertanggal = $dateInterval->m . ' bulan ' . $f;
+        }
+
+        if ($dateInterval->y) {
+            $tertanggal = $dateInterval->y . ' tahun ' . $f;
+        }
+        
+        if ($dateInterval->f < 0) {
+            return '0 hari';
+        } else {
+            return $tertanggal;
+        }
+
+    }
+}
